@@ -1,2 +1,2 @@
-# aqa-cypress
-AQA JavaScript Course Hillel IT - Cypress
+# QA Automation JavaScript(Cypress.io)
+AQA JavaScript Course Hillel IT - Cypress.io
