@@ -8,7 +8,7 @@
 // the password itself is not displayed in the Cypress logos
 // After writing, run the tests in UI mode and make sure all the tests are error-free.
 
-import './commands';
+import '../../support/commands';
 
 // Test suite for registration
 describe('Registration Tests.', () => {
