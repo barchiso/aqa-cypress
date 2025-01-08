@@ -13,12 +13,7 @@
 
 describe('Find elements', () => {
 	beforeEach(() => {
-		cy.visit('https://qauto.forstudy.space/', {
-			auth: {
-				username: 'guest',
-				password: 'welcome2qauto',
-			},
-		});
+		cy.visit('/');
 	});
 
 	describe('Headers elements', () => {

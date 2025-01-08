@@ -16,12 +16,7 @@ describe('Registration Tests.', () => {
 	const uniquePassword = 'Password1!';
 
 	beforeEach(() => {
-		cy.visit('https://qauto.forstudy.space/', {
-			auth: {
-				username: 'guest',
-				password: 'welcome2qauto',
-			},
-		});
+		cy.visit('/');
 		cy.get('.btn-primary').click();
 	});
 

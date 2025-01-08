@@ -2,7 +2,7 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
 	e2e: {
-		baseUrl: 'https://example.cypress.io',
+		baseUrl: 'https://guest:welcome2qauto@qauto.forstudy.space/',
 		fixturesFolder: 'cypress/fixtures',
 		specPattern: '**/*.cy.{js,jsx,ts,tsx}',
 		screenshotOnRunFailure: true,
