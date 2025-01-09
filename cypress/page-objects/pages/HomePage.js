@@ -1,19 +1,17 @@
-import BasePage from "./BasePage";
+import BasePage from './BasePage';
 
 class HomePage extends BasePage {
+	get signInButton() {
+		return cy.get('.header_signin');
+	}
 
-    get signInButton() {
-        return cy.get('.header_signin');
-    }
+	clickSignInButton() {
+		this.signInButton.click();
+	}
 
-    clickSignInButton() {
-        this.signInButton.click();
-    }
-
-    open() {
-        super.open('/');
-    }
-
+	open() {
+		super.open('/');
+	}
 }
 
 export default new HomePage();
