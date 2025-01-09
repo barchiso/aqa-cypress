@@ -19,6 +19,8 @@ export default defineConfig({
 	},
 	e2e: {
 		baseUrl: config.baseUrl, // Use the selected config's baseUrl
+		uniqueEmail: config.uniqueEmail, // Use the selected config's uniqueEmail
+		uniquePassword: config.uniquePassword, // Use the selected config's uniquePassword
 		fixturesFolder: 'cypress/fixtures',
 		specPattern: '**/*.cy.{js,jsx,ts,tsx}',
 		screenshotOnRunFailure: true,
