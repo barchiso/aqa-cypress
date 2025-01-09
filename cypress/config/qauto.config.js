@@ -9,7 +9,11 @@ export default defineConfig({
 		overwrite: true,
 	},
 	e2e: {
-		// baseUrl: 'https://guest:welcome2qauto@qauto2.forstudy.space/',
+		baseUrl: 'https://guest:welcome2qauto@qauto.forstudy.space/',
+		env: {
+			USER_EMAIL: 'bohdan.lutsyk86+TestUser11@gmail.com',
+			USER_PASSWORD: 'Password1',
+		},
 		fixturesFolder: 'cypress/fixtures',
 		specPattern: '**/*.cy.{js,jsx,ts,tsx}',
 		screenshotOnRunFailure: true,

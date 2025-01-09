@@ -3,18 +3,9 @@ import signInForm from '../../page-objects/forms/SignInForm';
 import garagePage from '../../page-objects/pages/GaragePage';
 import fuelExpensesPage from '../../page-objects/pages/FuelExpensesPage';
 import carDeletionForm from '../../page-objects/forms/CarDeletionForm';
-import qautoConfig from '../../config/qauto-config'; // Default config
-import qauto2Config from '../../config/qauto2-config'; // qauto2 config
 
-let config;
-
-if (Cypress.env('CYPRESS_ENV') === 'qauto2') {
-	// When running with CYPRESS_ENV=qauto2, use qauto2Config data
-	config = qauto2Config;
-} else {
-	// When running with default settings, use qautoConfig
-	config = qautoConfig;
-}
+const email = Cypress.env('USER_EMAIL'); // Get email from environment variable
+const password = Cypress.env('USER_PASSWORD');
 
 describe('Add car, fuel expenses, and delete car', () => {
 	const car = {
@@ -23,9 +14,14 @@ describe('Add car, fuel expenses, and delete car', () => {
 		mileage: '10000',
 	};
 
+	const today = new Date();
+	const formattedDate = today
+		.toLocaleDateString('uk-UA')
+		.replace(/\//g, '.'); // Converts to dd.MM.yyyy format for Ukraine
+
 	const expense = {
 		vehicle: 'Audi TT',
-		date: '9.01.2025',
+		date: formattedDate, // Automatically generated current date in dd.MM.yyyy format
 		mileage: '10500',
 		liters: '50',
 		totalCost: '100000',
@@ -35,12 +31,12 @@ describe('Add car, fuel expenses, and delete car', () => {
 	beforeEach(() => {
 		homePage.open();
 		homePage.clickSignInButton();
-		signInForm.login(config.uniqueEmail, config.uniquePassword); // Use credentials from config
+		signInForm.login(email, password); // Use credentials from config
 		garagePage.verifyUrl(); // Verify successful login and garage page navigation
 	});
 
-	it('Add a car and verify it is added', () => {
-		// Add a car and verify it's added
+	it('Add a new car', () => {
+		// Add a new car
 		garagePage.addCar(car);
 		garagePage.verifyCarAdded(car);
 	});

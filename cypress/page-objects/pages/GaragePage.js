@@ -21,6 +21,15 @@ class GaragePage extends BasePage {
 		return cy.contains('.modal-footer .btn-primary', 'Add');
 	}
 
+	// Method to delete all cars
+	deleteAllCars() {
+		this.editButtons.each(() => {
+			// Call the delete car method from CarDeletionForm
+			this.editButtons.click(); // Simulate click to open the delete form
+			cy.get('.delete-car-button').click(); // Assuming there's a delete button to confirm
+		});
+	}
+
 	addCar(car) {
 		this.addCarButton.should('be.visible').click();
 		this.carBrandSelect.should('be.visible').select(car.brand);
