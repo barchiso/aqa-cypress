@@ -10,11 +10,10 @@
 
 import '../../support/commands';
 
-// Test suite for registration
-describe('Registration Tests.', () => {
-	const uniqueEmail = `bohdan.lutsyk86+TestUser1+${Date.now()}@gmail.com`;
-	const uniquePassword = 'Password1!';
+const uniqueEmail = `bohdan.lutsyk86+TestUser1+${Date.now()}@gmail.com`;
+const uniquePassword = 'Password1!';
 
+describe('Registration Tests.', () => {
 	beforeEach(() => {
 		cy.visit('/');
 		cy.get('.btn-primary').click();
@@ -260,8 +259,9 @@ describe('Registration Tests.', () => {
 			cy.get('#signupPassword').type(uniquePassword, {
 				sensitive: true,
 			});
-			cy.get('#signupRepeatPassword').type(uniquePassword),
-				{ sensitive: true };
+			cy.get('#signupRepeatPassword').type(uniquePassword, {
+				sensitive: true,
+			});
 			cy.get('button[class="btn btn-primary"]').click();
 			cy.get('div[class="alert alert-success"] p')
 				.should('be.visible')

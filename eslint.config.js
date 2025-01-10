@@ -4,7 +4,14 @@ import pluginCypress from 'eslint-plugin-cypress/flat';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-	{ languageOptions: { globals: globals.browser } },
+	{
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				process: 'readonly',
+			},
+		},
+	},
 	pluginJs.configs.recommended,
 	pluginCypress.configs.recommended,
 	{
