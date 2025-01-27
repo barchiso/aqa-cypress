@@ -21,6 +21,10 @@ class GaragePage extends BasePage {
 		return cy.contains('.modal-footer .btn-primary', 'Add');
 	}
 
+	get profileButton() {
+		return cy.get('a[routerlink = "profile"]');
+	}
+
 	// Method to delete all cars
 	deleteAllCars() {
 		this.editButtons.each(() => {
@@ -49,6 +53,10 @@ class GaragePage extends BasePage {
 
 	verifyUrl() {
 		cy.url().should('include', '/panel/garage');
+	}
+
+	clickProfileButton() {
+		this.profileButton.click();
 	}
 
 	open() {
