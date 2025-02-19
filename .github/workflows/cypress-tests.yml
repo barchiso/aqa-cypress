@@ -18,7 +18,7 @@ jobs:
             - name: Run Cypress tests
               run: npm run test:qauto
 
-            - name: Upload Cypress test results (screenshots/videos if failed)
+            - name: Upload Cypress test results
               if: always()
               uses: actions/upload-artifact@v4
               with:
@@ -26,6 +26,12 @@ jobs:
                   path: |
                       cypress/screenshots
                       cypress/videos
+                      
+            - name: Create docs directory and copy results if they exist
+              run: |
+                mkdir -p docs
+                if [ -d "cypress/screenshots" ]; then cp -R cypress/screenshots docs/; fi
+                if [ -d "cypress/videos" ]; then cp -R cypress/videos docs/; fi
 
             - name: Deploy to GitHub Pages
               if: always()
