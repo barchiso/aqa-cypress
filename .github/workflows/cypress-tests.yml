@@ -37,11 +37,11 @@ jobs:
           - name: Checkout repository 
             uses: actions/checkout@v4
     
-          - name: Create docs directory and copy results if they exist
-            run: |
-              mkdir -p docs
-              if [ -d "cypress/screenshots" ]; then cp -R cypress/screenshots docs/; fi
-              if [ -d "cypress/videos" ]; then cp -R cypress/videos docs/; fi
+          - name: Download Cypress test results
+            uses: actions/download-artifact@v4
+            with:
+              name: cypress-results
+              path: docs
               
           - name: Setup Pages
             uses: actions/configure-pages@v5
