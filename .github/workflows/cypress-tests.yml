@@ -36,9 +36,6 @@ jobs:
             - name: Deploy to GitHub Pages
               if: always()
               run: | 
-                mkdir -p docs
-                cp -R cypress/screenshots docs/
-                cp -R cypress/videos docs/
                 git config --global user.name "github-actions"
                 git config --global user.email "github-actions@github.com"
                 git add docs
