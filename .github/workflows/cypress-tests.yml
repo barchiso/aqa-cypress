@@ -18,10 +18,12 @@ jobs:
             - name: Run Cypress tests
               run: npm run test:qauto
 
-            - name: Create necessary directories for Cypress results
+            - name: Check if Cypress test results exist
               run: |
-                  mkdir -p cypress/results
-                  mkdir -p cypress/reports
+                  if [ ! -d "cypress/results" ] || [ ! -f "cypress/results/*.json" ]; then
+                    echo "No test results found. Skipping report generation."
+                    exit 0
+                  fi
 
             - name: Generate Cypress HTML report
               run: |
