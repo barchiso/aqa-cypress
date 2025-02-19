@@ -24,8 +24,10 @@ export default defineConfig({
 		defaultBrowser: 'chrome',
 		trashAssetsBeforeRuns: true, // Enable trash asset cleanup
 		setupNodeEvents(on, config) {
-			require('cypress-mochawesome-reporter/plugin')(on);
-      			return config
+			import('cypress-mochawesome-reporter/plugin.js').then((module) => {
+				module.default(on);
+				return config;
+			});
 		},
 	},
 });
