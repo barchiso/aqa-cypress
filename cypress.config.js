@@ -7,10 +7,9 @@ export default defineConfig({
 	reporterOptions: {
 		reportDir: 'cypress/reports',
 		overwrite: true,
-		reportFilename: "[name]-report",
-   		overwrite: true,
-    		html: true,
-    		json: true
+		reportFilename: '[name]-report',
+		html: true,
+		json: true,
 	},
 	e2e: {
 		baseUrl: 'https://guest:welcome2qauto@qauto.forstudy.space/',
