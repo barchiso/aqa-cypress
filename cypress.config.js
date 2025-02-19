@@ -9,7 +9,7 @@ export default defineConfig({
 		overwrite: true,
 		reportFilename: "[name]-report",
    		overwrite: true,
-    		html: false,
+    		html: true,
     		json: true
 	},
 	e2e: {
