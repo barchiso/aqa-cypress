@@ -8,7 +8,7 @@ export default defineConfig({
 		reportDir: 'cypress/reports',
 		overwrite: true,
 		reportFilename: "[name]-report",
-   		"overwrite: true,
+   		overwrite: true,
     		html: false,
     		json: true
 	},
@@ -24,9 +24,8 @@ export default defineConfig({
 		defaultBrowser: 'chrome',
 		trashAssetsBeforeRuns: true, // Enable trash asset cleanup
 		setupNodeEvents(on, config) {
-			import('cypress-mochawesome-reporter/plugin.js').then((module) => {
-				module.default(on);
-				return config;
+			require('cypress-mochawesome-reporter/plugin')(on);
+      			return config;
 			});
 		},
 	},
