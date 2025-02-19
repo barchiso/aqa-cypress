@@ -19,10 +19,22 @@ jobs:
               run: npm run test:qauto
 
             - name: Upload Cypress test results (screenshots/videos if failed)
-              if: failure()
+              if: always()
               uses: actions/upload-artifact@v4
               with:
                   name: cypress-results
                   path: |
                       cypress/screenshots
                       cypress/videos
+
+            - name: Deploy to GitHub Pages
+              if: always()
+              run: | 
+                mkdir -p docs
+                cp -R cypress/screenshots docs/
+                cp -R cypress/videos docs/
+                git config --global user.name "github-actions"
+                git config --global user.email "github-actions@github.com"
+                git add docs
+                git commit -m "Deploy Cypress test results"
+                git push origin HEAD:gh-pages
