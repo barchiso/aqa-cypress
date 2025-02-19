@@ -25,8 +25,7 @@ export default defineConfig({
 		trashAssetsBeforeRuns: true, // Enable trash asset cleanup
 		setupNodeEvents(on, config) {
 			require('cypress-mochawesome-reporter/plugin')(on);
-      			return config;
-			});
+      			return config
 		},
 	},
 });
