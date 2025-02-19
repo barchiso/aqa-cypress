@@ -29,12 +29,12 @@ jobs:
     deploy:
         if: ${{ always() }}
         runs-on: ubuntu-latest
-        needs: test
+        needs: cypress-tests
         permissions:
           pages: write
           id-token: write
         steps:
-        - name: Checkout repository
+          - name: Checkout repository 
             uses: actions/checkout@v4
     
           - name: Create docs directory and copy results if they exist
@@ -43,15 +43,15 @@ jobs:
               if [ -d "cypress/screenshots" ]; then cp -R cypress/screenshots docs/; fi
               if [ -d "cypress/videos" ]; then cp -R cypress/videos docs/; fi
               
-        - name: Setup Pages
-           uses: actions/configure-pages@v5
+          - name: Setup Pages
+            uses: actions/configure-pages@v5
     
-        - name: Upload artifact to Pages
-          uses: actions/upload-pages-artifact@v3
-          with:
-              path: docs
+          - name: Upload artifact to Pages
+            uses: actions/upload-pages-artifact@v3
+            with:
+                path: docs
 
-         - name: Deploy to GitHub Pages
+          - name: Deploy to GitHub Pages
             id: deployment
             uses: actions/deploy-pages@v4
     
