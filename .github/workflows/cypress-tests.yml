@@ -18,14 +18,20 @@ jobs:
             - name: Run Cypress tests
               run: npm run test:qauto
 
+            - name: Generate Cypress HTML report
+              run: |
+                  npx mochawesome-merge cypress/results/*.json > cypress/results/report.json
+                  npx mochawesome-report-generator cypress/results/report.json --reportDir=cypress/reports --reportTitle="Cypress Test Report"
+
             - name: Upload Cypress test results
               if: always()
               uses: actions/upload-artifact@v4
               with:
-                  name: cypress-results
-                  path: |
-                      cypress/screenshots
-                      cypress/videos
+                 name: cypress-results
+                 path: |
+                    cypress/reports
+                    cypress/screenshots
+                    cypress/videos
     deploy:
         if: ${{ always() }}
         runs-on: ubuntu-latest
