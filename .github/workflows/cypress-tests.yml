@@ -32,7 +32,7 @@ jobs:
               with:
                  name: cypress-results
                  path: |
-                    cypress/reports
+                    cypress/reports/
                     cypress/screenshots
                     cypress/videos
                     
